@@ -1,36 +1,230 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Gaurav Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaurav Yadav | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-body {font-family: Arial; background:#0f172a; color:white; text-align:center;}
-.section {padding:40px;}
-.card {background:#1e293b; margin:10px; padding:20px; border-radius:10px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#020617;
+  color:#e2e8f0;
+}
+
+/* layout */
+section{padding:100px 80px;}
+h2{margin-bottom:40px;font-size:28px;}
+p{color:#94a3b8;line-height:1.6;}
+
+/* navbar */
+nav{
+  position:fixed;
+  width:100%;
+  padding:18px 60px;
+  display:flex;
+  justify-content:space-between;
+  backdrop-filter:blur(10px);
+}
+
+nav a{
+  margin-left:25px;
+  color:#94a3b8;
+  text-decoration:none;
+}
+
+nav a:hover{color:white;}
+
+/* hero */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:60px;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#38bdf8,#22c55e);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* skills */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:30px;
+}
+
+.skill-category{
+  background:#0f172a;
+  padding:25px;
+  border-radius:12px;
+}
+
+.skill-category i{
+  color:#38bdf8;
+  margin-right:8px;
+}
+
+/* cards */
+.card{
+  background:#0f172a;
+  padding:25px;
+  border-radius:12px;
+  margin-bottom:20px;
+}
+
+/* project */
+.featured{
+  display:flex;
+  gap:30px;
+  align-items:center;
+}
+
+.featured img{
+  width:300px;
+  border-radius:12px;
+}
+
+/* footer */
+footer{
+  text-align:center;
+  padding:40px;
+  color:#64748b;
+}
 </style>
 </head>
 
 <body>
 
-<h1>Gaurav Yadav</h1>
-<p>B.Tech CSE Student</p>
+<nav>
+  <div>Gaurav</div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+  </div>
+</nav>
 
-<div class="section">
-<h2>Projects</h2>
+<!-- HERO -->
+<section class="hero">
+  <h1>Gaurav <span class="gradient">Yadav</span></h1>
+  <p>
+    Computer Science student focused on building real-world systems.
+    I work on backend-driven applications, structured development, and problem solving.
+    My goal is to become a skilled software developer and secure strong internships.
+  </p>
+</section>
 
-<div class="card">ERP Management System</div>
-<div class="card">Banking System (C++)</div>
-<div class="card">Sales Dashboard</div>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About</h2>
+  <p>
+    I am currently pursuing B.Tech in Computer Science at NIET.
+    I enjoy working on practical projects that simulate real-world systems such as ERP platforms and banking systems.
+    My focus is on improving problem-solving skills, understanding system design, and building scalable applications.
+  </p>
+</section>
 
-</div>
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Skills</h2>
 
-<div class="section">
-<h2>Skills</h2>
-<p>C++, Python, HTML, CSS</p>
-</div>
+  <div class="skills-grid">
 
-<div class="section">
-<h2>Contact</h2>
-<p>00gauravyadav00@gmail.com</p>
-</div>
+    <div class="skill-category">
+      <h3>Languages</h3>
+      <p><i class="fa-solid fa-code"></i> C++</p>
+      <p><i class="fa-brands fa-python"></i> Python</p>
+      <p><i class="fa-brands fa-java"></i> Java</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>Web Development</h3>
+      <p><i class="fa-brands fa-html5"></i> HTML</p>
+      <p><i class="fa-brands fa-css3-alt"></i> CSS</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>Tools</h3>
+      <p><i class="fa-brands fa-github"></i> GitHub</p>
+      <p><i class="fa-solid fa-code"></i> VS Code</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>Concepts</h3>
+      <p><i class="fa-solid fa-diagram-project"></i> DSA</p>
+      <p><i class="fa-solid fa-cube"></i> OOP</p>
+      <p><i class="fa-solid fa-server"></i> OS</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Featured Project</h2>
+
+  <div class="featured">
+    <div>
+      <h3>ERP Management System</h3>
+      <p>
+        Developed a full ERP system with CRUD operations, CSV upload, validation,
+        and secure database handling using PHP and MySQL.
+      </p>
+      <a href="https://github.com/GauravYadav0606/ERP-Management-System" target="_blank">GitHub</a>
+    </div>
+
+    <img src="https://via.placeholder.com/300x200">
+  </div>
+
+  <h2 style="margin-top:60px;">Other Projects</h2>
+
+  <div class="card">
+    <h3>Banking System</h3>
+    <p>C++ banking system with authentication and transactions.</p>
+    <a href="https://github.com/GauravYadav0606/Banking-System-Project">GitHub</a>
+  </div>
+
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="card">
+    <h3>Smart India Hackathon (SIH)</h3>
+    <p>
+      Selected for second round. Worked on AI-based career guidance system.
+      Gained experience in teamwork and product thinking.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>IdeaHack 2.0</h3>
+    <p>
+      Led a team and pitched a startup-level idea. Developed communication and leadership skills.
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Gaurav Yadav</p>
+</footer>
 
 </body>
 </html>
