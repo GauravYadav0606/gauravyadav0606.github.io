@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,32 +16,39 @@ body{
   color:#e2e8f0;
 }
 
-/* layout */
-section{padding:100px 80px;}
-h2{margin-bottom:40px;font-size:28px;}
-p{color:#94a3b8;line-height:1.6;}
+/* Glow */
+body::before, body::after{
+  content:'';
+  position:fixed;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  filter:blur(120px);
+  z-index:-1;
+}
+body::before{background:#22c55e33; top:-80px; left:-80px;}
+body::after{background:#38bdf833; bottom:-80px; right:-80px;}
 
-/* navbar */
+/* Navbar */
 nav{
   position:fixed;
   width:100%;
-  padding:18px 60px;
+  padding:18px 50px;
   display:flex;
   justify-content:space-between;
   backdrop-filter:blur(10px);
 }
 
 nav a{
-  margin-left:25px;
+  margin-left:20px;
   color:#94a3b8;
   text-decoration:none;
 }
-
 nav a:hover{color:white;}
 
-/* hero */
+/* Hero */
 .hero{
-  height:100vh;
+  height:90vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -60,48 +66,92 @@ nav a:hover{color:white;}
   -webkit-text-fill-color:transparent;
 }
 
-/* skills */
+.hero p{
+  margin-top:15px;
+  max-width:600px;
+  color:#94a3b8;
+}
+
+/* Sections */
+section{
+  padding:70px 60px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s;
+}
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+h2{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+/* Skills */
 .skills-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
 
 .skill-category{
   background:#0f172a;
-  padding:25px;
+  padding:20px;
   border-radius:12px;
+  transition:0.3s;
 }
-
-.skill-category i{
-  color:#38bdf8;
-  margin-right:8px;
+.skill-category:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 20px rgba(56,189,248,0.2);
 }
+.skill-category p{margin-top:8px;}
+.skill-category i{color:#38bdf8;margin-right:8px;}
 
-/* cards */
-.card{
-  background:#0f172a;
-  padding:25px;
-  border-radius:12px;
-  margin-bottom:20px;
-}
-
-/* project */
-.featured{
+/* Cards */
+.projects{
   display:flex;
-  gap:30px;
-  align-items:center;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
 }
 
-.featured img{
-  width:300px;
+.card{
+  width:280px;
+  background:#0f172a;
+  padding:18px;
   border-radius:12px;
+  transition:0.3s;
+  cursor:pointer;
+}
+.card:hover{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 0 20px rgba(34,197,94,0.25);
 }
 
-/* footer */
+.card a{
+  color:#38bdf8;
+  text-decoration:none;
+}
+
+/* Expand */
+.hidden{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:0.4s;
+}
+.card.active .hidden{
+  max-height:200px;
+  margin-top:10px;
+  opacity:1;
+}
+
+/* Footer */
 footer{
   text-align:center;
-  padding:40px;
+  padding:30px;
   color:#64748b;
 }
 </style>
@@ -112,10 +162,9 @@ footer{
 <nav>
   <div>Gaurav</div>
   <div>
-    <a href="#about">About</a>
     <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
   </div>
 </nav>
 
@@ -123,26 +172,14 @@ footer{
 <section class="hero">
   <h1>Gaurav <span class="gradient">Yadav</span></h1>
   <p>
-    Computer Science student focused on building real-world systems.
-    I work on backend-driven applications, structured development, and problem solving.
-    My goal is to become a skilled software developer and secure strong internships.
-  </p>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2>About</h2>
-  <p>
-    I am currently pursuing B.Tech in Computer Science at NIET.
-    I enjoy working on practical projects that simulate real-world systems such as ERP platforms and banking systems.
-    My focus is on improving problem-solving skills, understanding system design, and building scalable applications.
+    B.Tech Computer Science student at NIET focused on building real-world systems.
+    Strong in DSA, OOP, and backend development with hands-on project experience.
   </p>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
   <h2>Skills</h2>
-
   <div class="skills-grid">
 
     <div class="skill-category">
@@ -162,6 +199,7 @@ footer{
       <h3>Tools</h3>
       <p><i class="fa-brands fa-github"></i> GitHub</p>
       <p><i class="fa-solid fa-code"></i> VS Code</p>
+      <p><i class="fa-solid fa-chart-line"></i> Tableau</p>
     </div>
 
     <div class="skill-category">
@@ -169,6 +207,31 @@ footer{
       <p><i class="fa-solid fa-diagram-project"></i> DSA</p>
       <p><i class="fa-solid fa-cube"></i> OOP</p>
       <p><i class="fa-solid fa-server"></i> OS</p>
+      <p><i class="fa-solid fa-database"></i> DBMS</p>
+      <p><i class="fa-solid fa-brain"></i> Machine Learning</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="projects">
+
+    <div class="card">
+      <h3>Smart India Hackathon (SIH)</h3>
+      <p>
+        Selected for second round. Worked on an AI-based career guidance system.
+      </p>
+      <a href="https://github.com/GauravYadav0606/SIH" target="_blank">GitHub</a>
+    </div>
+
+    <div class="card">
+      <h3>IdeaHack 2.0</h3>
+      <p>
+        Led a team and pitched a startup-level idea. Developed leadership and product thinking.
+      </p>
     </div>
 
   </div>
@@ -176,55 +239,57 @@ footer{
 
 <!-- PROJECTS -->
 <section id="projects">
-  <h2>Featured Project</h2>
+  <h2>Projects</h2>
 
-  <div class="featured">
-    <div>
+  <div class="projects">
+
+    <div class="card" onclick="toggleCard(this)">
       <h3>ERP Management System</h3>
-      <p>
-        Developed a full ERP system with CRUD operations, CSV upload, validation,
-        and secure database handling using PHP and MySQL.
-      </p>
-      <a href="https://github.com/GauravYadav0606/ERP-Management-System" target="_blank">GitHub</a>
+      <p>PHP + MySQL</p>
+
+      <div class="hidden">
+        <p>
+          ERP system with CRUD operations, CSV upload, and secure database integration using PDO.
+        </p>
+        <a href="https://github.com/GauravYadav0606/ERP-Management-System" target="_blank">GitHub</a>
+      </div>
     </div>
 
-    <img src="https://via.placeholder.com/300x200">
+    <div class="card" onclick="toggleCard(this)">
+      <h3>Banking System</h3>
+      <p>C++ Application</p>
+
+      <div class="hidden">
+        <p>
+          Banking system with account management, PIN authentication, deposits and withdrawals.
+        </p>
+        <a href="https://github.com/GauravYadav0606/Banking-System-Project" target="_blank">GitHub</a>
+      </div>
+    </div>
+
   </div>
-
-  <h2 style="margin-top:60px;">Other Projects</h2>
-
-  <div class="card">
-    <h3>Banking System</h3>
-    <p>C++ banking system with authentication and transactions.</p>
-    <a href="https://github.com/GauravYadav0606/Banking-System-Project">GitHub</a>
-  </div>
-
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <h2>Experience</h2>
-
-  <div class="card">
-    <h3>Smart India Hackathon (SIH)</h3>
-    <p>
-      Selected for second round. Worked on AI-based career guidance system.
-      Gained experience in teamwork and product thinking.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>IdeaHack 2.0</h3>
-    <p>
-      Led a team and pitched a startup-level idea. Developed communication and leadership skills.
-    </p>
-  </div>
-
 </section>
 
 <footer>
   <p>© 2026 Gaurav Yadav</p>
 </footer>
+
+<script>
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+  sections.forEach((sec,i)=>{
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      setTimeout(()=>{sec.classList.add("show");}, i*100);
+    }
+  });
+});
+
+function toggleCard(card){
+  card.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
